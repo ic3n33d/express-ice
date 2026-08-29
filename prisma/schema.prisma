@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// 1. The Customer (The Bar/Pub)
+model Pub {
+  id           String   @id @default(cuid())
+  businessName String
+  address      String
+  orders       Order[]
+}
+
+// 2. The Driver/Ice Company
+model Supplier {
+  id        String   @id @default(cuid())
+  name      String
+  subdomain String?  @unique
+  orders    Order[]
+}
+
+// 3. The Product (e.g., Cubed Ice, Crushed Ice)
+model CatalogItem {
+  id    String  @id @default(cuid())
+  name  String
+  icon  String
+  price Float
+  orders Order[]
+}
+
+// 4. The Live Delivery Job
+model Order {
+  id            String       @id @default(cuid())
+  quantity      Int
+  totalAmount   Float
+  status        OrderStatus  @default(SEARCHING)
+  
+  // GPS Tracking Fields
+  vanLat        Float?
+  vanLng        Float?
+  
+  // Timestamps
+  acceptedAt    DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  // Connections to the other tables
+  pubId         String
+  pub           Pub          @relation(fields: [pubId], references: [id])
+  
+  supplierId    String?
+  supplier      Supplier?    @relation(fields: [supplierId], references: [id])
+
+  catalogItemId String
+  catalogItem   CatalogItem  @relation(fields: [catalogItemId], references: [id])
+}
+
+// The lifecycle of our delivery
+enum OrderStatus {
+  IDLE
+  SEARCHING
+  EN_ROUTE
+  DELIVERED
+}

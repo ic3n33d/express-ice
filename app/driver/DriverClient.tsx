@@ -36,8 +36,11 @@ export default function DriverClient({ initialActiveJob, initialPendingJobs }: {
     );
 
     return () => navigator.geolocation.clearWatch(watchId);
-  }, [activeJob]);
+ }, [activeJob]);
 
-  </div>
+  return (
+    <div>
+      {/* Your Driver UI code goes here */}
+    </div>
+  );
 }
-  

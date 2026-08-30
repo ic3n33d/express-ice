@@ -100,7 +100,7 @@ export default function OrderClient({ items }: { items: CatalogItem[] }) {
       return;
     }
 
-    setActiveOrderId(result.orderId);
+    setActiveOrderId(result.orderId || null);
   } catch (error: any) {
     alert("Network Error: Could not reach the server.");
     setOrderStatus("IDLE");

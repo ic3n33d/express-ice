@@ -1,6 +1,4 @@
-import OrderClient from "./OrderClient";
-import { prisma } from "@/lib/prisma";
-
+import prisma from "@/lib/prisma";
 export default async function OrderPage() {
   // 1. Check if the database has our London inventory
   const itemCount = await prisma.catalogItem.count();

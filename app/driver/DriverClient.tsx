@@ -48,6 +48,6 @@ export default function DriverClient({ initialActiveJob, initialPendingJobs }: {
     <div className="text-center mb-3 mt-2 relative">
        <div className="absolute top-0 right-0">
          <UserButton afterSignOutUrl="/driver" />
-       </div>
-       ...
-  */
+  </div>
+    );
+  }

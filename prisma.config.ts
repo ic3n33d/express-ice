@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default defineConfig({
+  // @ts-ignore
   datasource: {
     url: process.env.DATABASE_URL,
   },

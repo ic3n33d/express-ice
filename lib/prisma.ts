@@ -9,6 +9,7 @@ const adapter = new PrismaPg({
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
 // 2. Pass the adapter directly into the PrismaClient constructor
+// @ts-ignore
 export const prisma = globalForPrisma.prisma || new PrismaClient({ adapter });
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

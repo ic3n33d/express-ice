@@ -44,10 +44,10 @@ export default function DriverClient({ initialActiveJob, initialPendingJobs }: {
   // Update your return blocks to include the <UserButton /> in the top right corner!
   
   // Example for the Active Job screen:
-  /*
+  
     <div className="text-center mb-3 mt-2 relative">
        <div className="absolute top-0 right-0">
          <UserButton afterSignOutUrl="/driver" />
   </div>
-    );
-  }
+  
+  
